@@ -1,6 +1,7 @@
 interface TipState {
   name: string;
-  detail: string | null;
+  fixture: string | null;
+  result: string | null;
   x: number;
   y: number;
 }
@@ -10,7 +11,8 @@ export function Tooltip({ tip }: { tip: TipState | null }) {
   return (
     <div className="tooltip" style={{ left: tip.x, top: tip.y }} role="status" aria-live="polite">
       <span className="tooltip-name">{tip.name}</span>
-      {tip.detail && <span className="tooltip-detail">{tip.detail}</span>}
+      {tip.fixture && <span className="tooltip-fixture">{tip.fixture}</span>}
+      {tip.result && <span className="tooltip-detail">{tip.result}</span>}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { TEAM_SLOTS, VIEW, WINNER_SLOTS } from '../lib/geometry';
 import { MATCH_LIST, isParticipant } from '../lib/bracketState';
 import type { Winners } from '../lib/bracketState';
 import { getTeam } from '../data/teams';
-import { formatResult } from '../lib/format';
+import { formatFixture, formatResult } from '../lib/format';
 import { FlagNode } from './FlagNode';
 import { MatchConnector } from './MatchConnector';
 import { Trophy } from './Trophy';
@@ -12,7 +12,8 @@ import { Tooltip } from './Tooltip';
 
 interface TipState {
   name: string;
-  detail: string | null;
+  fixture: string | null;
+  result: string | null;
   x: number;
   y: number;
 }
@@ -37,21 +38,23 @@ export function Bracket({
   const containerRef = useRef<HTMLDivElement>(null);
   const [tip, setTip] = useState<TipState | null>(null);
 
-  const enter = (teamId: string, detail: string | null) => (e: MouseEvent | FocusEvent) => {
-    const team = getTeam(teamId);
-    if (!team) return;
-    const container = containerRef.current;
-    if (!container) return;
-    const cRect = container.getBoundingClientRect();
-    const tRect = (e.currentTarget as Element).getBoundingClientRect();
-    setHighlightTeam(teamId);
-    setTip({
-      name: team.name,
-      detail,
-      x: tRect.left + tRect.width / 2 - cRect.left,
-      y: tRect.top - cRect.top,
-    });
-  };
+  const enter =
+    (teamId: string, matchId: string) => (e: MouseEvent | FocusEvent) => {
+      const team = getTeam(teamId);
+      if (!team) return;
+      const container = containerRef.current;
+      if (!container) return;
+      const cRect = container.getBoundingClientRect();
+      const tRect = (e.currentTarget as Element).getBoundingClientRect();
+      setHighlightTeam(teamId);
+      setTip({
+        name: team.name,
+        fixture: formatFixture(matchId),
+        result: formatResult(matchId),
+        x: tRect.left + tRect.width / 2 - cRect.left,
+        y: tRect.top - cRect.top,
+      });
+    };
 
   const leave = () => {
     setHighlightTeam(null);
@@ -83,7 +86,6 @@ export function Bracket({
         <g className="winner-slots">
           {WINNER_SLOTS.map((s) => {
             const teamId = winners[s.matchId] ?? null;
-            const detail = formatResult(s.matchId);
             const clickable = !!teamId && !!s.parentId;
             return (
               <FlagNode
@@ -98,7 +100,7 @@ export function Bracket({
                 locked={false}
                 ariaLabel={teamId ? `${getTeam(teamId)!.name}, advance to next round` : 'Undecided'}
                 onPick={clickable && teamId && s.parentId ? () => pick(s.parentId!, teamId) : undefined}
-                onEnter={teamId ? enter(teamId, detail) : undefined}
+                onEnter={teamId ? enter(teamId, s.matchId) : undefined}
                 onLeave={teamId ? leave : undefined}
               />
             );
@@ -112,7 +114,7 @@ export function Bracket({
         <g className="team-slots">
           {TEAM_SLOTS.map((s) => {
             const locked = isLocked(s.matchId);
-            const detail = formatResult(s.matchId);
+            const result = formatResult(s.matchId);
             const team = getTeam(s.teamId)!;
             return (
               <FlagNode
@@ -125,10 +127,9 @@ export function Bracket({
                 highlighted={highlightTeam === s.teamId}
                 dimmed={!!highlightTeam && highlightTeam !== s.teamId}
                 locked={locked}
-                ariaLabel={`${team.name}${detail ? `, ${detail}` : ''}`}
+                ariaLabel={`${team.name}${result ? `, ${result}` : ''}`}
                 onPick={() => pick(s.matchId, s.teamId)}
-                onEnter={enter(s.teamId, detail)}
-                onMove={undefined}
+                onEnter={enter(s.teamId, s.matchId)}
                 onLeave={leave}
               />
             );

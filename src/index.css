@@ -288,6 +288,12 @@ body {
   font-weight: 700;
 }
 
+.tooltip-fixture {
+  font-size: 0.72rem;
+  color: #e3c97f;
+  white-space: normal;
+}
+
 .tooltip-detail {
   font-size: 0.72rem;
   color: #cdc6b4;

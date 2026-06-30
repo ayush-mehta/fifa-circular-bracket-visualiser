@@ -20,8 +20,8 @@ export function Controls({ whatIf, setWhatIf, resetToActual, clearAll, champion 
       </div>
 
       <p className="hint">
-        Click a team to advance it one round toward the trophy. Hover a flag for the country name.
-        Hover to trace a team&rsquo;s path to the final.
+        Click a team to advance it one round toward the trophy. Hover a flag for its country name,
+        fixture date and venue — and to trace that team&rsquo;s path to the final.
       </p>
 
       <div className="buttons">
