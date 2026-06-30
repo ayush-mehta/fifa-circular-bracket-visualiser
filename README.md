@@ -11,8 +11,11 @@ the centre.
 
 - **Faithful radial layout** — 32 flags positioned by polar geometry, left and right halves
   meeting at the central trophy, recreating the reference design.
-- **Hover for the country name** — every flag shows a tooltip (and an accessible `<title>` /
-  `aria-label`); completed matches also show the scoreline.
+- **Hover for the details** — every flag shows a tooltip (and an accessible `<title>` /
+  `aria-label`) with the country name, the **fixture date, kickoff time (IST) and venue**, and — for
+  matches already played — the scoreline. It's only shown on hover, so the bracket stays uncluttered.
+
+  ![Fixture tooltip](docs/tooltip.png)
 - **Prediction mode** — click a team to advance it one round toward the trophy. Picks cascade:
   changing an earlier result clears everything downstream that depended on it. A champion is
   revealed at the centre once the final is decided.
