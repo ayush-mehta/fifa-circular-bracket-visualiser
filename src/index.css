@@ -1,0 +1,317 @@
+:root {
+  --bg: #ece7da;
+  --bg-2: #e4dece;
+  --ink: #1c1a17;
+  --muted: #6f6a5f;
+  --ring: rgba(28, 26, 23, 0.4);
+  --ring-soft: rgba(28, 26, 23, 0.22);
+  --gold: #c19433;
+  --gold-soft: rgba(193, 148, 51, 0.28);
+
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 38%, var(--bg) 0%, var(--bg-2) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 16px 8px;
+}
+
+/* ---- Controls ------------------------------------------------------------- */
+
+.controls {
+  text-align: center;
+  max-width: 760px;
+}
+
+.titles h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 2px 0 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hint {
+  margin: 0 auto 12px;
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ring);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.toggle input {
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.legend {
+  margin: 10px 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.legend em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+.champion-banner {
+  margin: 10px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ---- Stage / bracket ------------------------------------------------------ */
+
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.bracket-container {
+  position: relative;
+  width: min(94vmin, 860px);
+  aspect-ratio: 1 / 1;
+}
+
+.bracket-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Connectors */
+.connector {
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.8;
+  transition: opacity 0.18s, stroke 0.18s, stroke-width 0.18s;
+}
+
+.connector.highlighted {
+  stroke: var(--gold);
+  stroke-width: 3.4;
+  opacity: 1;
+}
+
+.connector.dimmed {
+  opacity: 0.12;
+}
+
+/* Flag nodes */
+.slot-empty {
+  fill: var(--ink);
+  opacity: 0.28;
+}
+
+.flag-node {
+  transition: opacity 0.18s;
+}
+
+.flag-node .flag-ring {
+  stroke: var(--ring);
+  stroke-width: 1.6;
+  transition: stroke 0.15s, stroke-width 0.15s;
+}
+
+.flag-node.locked .flag-ring {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.flag-node .flag-missing {
+  fill: var(--bg-2);
+  stroke: var(--ring);
+  stroke-width: 1.5;
+}
+
+.flag-node.clickable {
+  cursor: pointer;
+}
+
+.flag-node.clickable:hover .flag-ring,
+.flag-node:focus-visible .flag-ring,
+.flag-node.highlighted .flag-ring {
+  stroke: var(--gold);
+  stroke-width: 3.4;
+}
+
+.flag-node:focus {
+  outline: none;
+}
+
+.flag-node:focus-visible {
+  outline: none;
+}
+
+.flag-node.dimmed {
+  opacity: 0.22;
+}
+
+/* Trophy / champion */
+.trophy path {
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.trophy rect {
+  fill: var(--ink);
+}
+
+.champion-glow {
+  fill: var(--gold-soft);
+}
+
+.champion-ring {
+  stroke: var(--gold);
+  stroke-width: 4;
+}
+
+.champion-trophy path {
+  stroke: var(--gold);
+}
+
+.champion-trophy rect {
+  fill: var(--gold);
+}
+
+.champion-label {
+  fill: var(--gold);
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+}
+
+.champion-name {
+  fill: var(--ink);
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* ---- Tooltip -------------------------------------------------------------- */
+
+.tooltip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 12px));
+  background: var(--ink);
+  color: #f7f3e9;
+  padding: 6px 11px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-width: min(80vw, 340px);
+}
+
+.tooltip-name {
+  font-weight: 700;
+}
+
+.tooltip-detail {
+  font-size: 0.72rem;
+  color: #cdc6b4;
+  white-space: normal;
+}
+
+/* ---- Footer --------------------------------------------------------------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 0 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    gap: 8px;
+  }
+  .btn {
+    padding: 6px 12px;
+  }
+}
