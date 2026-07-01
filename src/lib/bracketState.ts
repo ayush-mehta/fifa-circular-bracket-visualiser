@@ -65,7 +65,8 @@ function buildRound(round: RoundId, count: number, childPrefix: string, parentPr
       childKind: 'match',
       childA: `${childPrefix}-${2 * i}`,
       childB: `${childPrefix}-${2 * i + 1}`,
-      parentId: parentPrefix ? `${parentPrefix}-${Math.floor(i / 2)}` : null,
+      // The final has the bare id 'final' (no index), so SF matches parent to it directly.
+      parentId: parentPrefix === 'final' ? 'final' : parentPrefix ? `${parentPrefix}-${Math.floor(i / 2)}` : null,
     });
   }
 }
