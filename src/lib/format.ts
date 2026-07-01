@@ -1,4 +1,4 @@
-import { R32_SEED } from '../data/bracket';
+import { FIXTURES, R32_SEED } from '../data/bracket';
 import { TEAMS } from '../data/teams';
 
 const seedById: Record<string, (typeof R32_SEED)[number]> = {};
@@ -14,17 +14,17 @@ const IST_FORMAT = new Intl.DateTimeFormat('en-US', {
   hour12: true,
 });
 
-/** Fixture line for an R32 match in IST, e.g.
- *  "Sun 28 Jun · 10:30 PM IST · Los Angeles". Returns null for later rounds,
- *  which have no scheduled kickoff in the seed. */
+/** Fixture line for any match in IST, e.g.
+ *  "Sun 28 Jun · 10:30 PM IST · Los Angeles". Returns null if the match has no
+ *  scheduled fixture. */
 export function formatFixture(matchId: string): string | null {
-  const m = seedById[matchId];
-  if (!m?.kickoffUTC) return null;
+  const f = FIXTURES[matchId];
+  if (!f) return null;
   const p: Record<string, string> = {};
-  for (const part of IST_FORMAT.formatToParts(new Date(m.kickoffUTC))) p[part.type] = part.value;
+  for (const part of IST_FORMAT.formatToParts(new Date(f.kickoffUTC))) p[part.type] = part.value;
   const date = `${p.weekday} ${p.day} ${p.month}`;
   const time = `${p.hour}:${p.minute} ${p.dayPeriod} IST`;
-  return `${date} · ${time} · ${m.venue}`;
+  return `${date} · ${time} · ${f.venue}`;
 }
 
 /** Human-readable scoreline for a completed R32 match, e.g.
