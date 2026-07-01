@@ -33,8 +33,16 @@ export const R32_SEED: R32Seed[] = [
     kickoffUTC: '2026-06-29T21:00:00Z', venue: 'Houston',
     result: { winner: 'BRA', scoreTop: 2, scoreBottom: 1 },
   },
-  { id: 'r32-1', top: 'CIV', bottom: 'NOR', kickoffUTC: '2026-06-30T17:00:00Z', venue: 'Arlington, TX' },
-  { id: 'r32-2', top: 'MEX', bottom: 'ECU', kickoffUTC: '2026-07-01T01:00:00Z', venue: 'Mexico City' },
+  {
+    id: 'r32-1', top: 'CIV', bottom: 'NOR',
+    kickoffUTC: '2026-06-30T17:00:00Z', venue: 'Arlington, TX',
+    result: { winner: 'NOR', scoreTop: 1, scoreBottom: 2 },
+  },
+  {
+    id: 'r32-2', top: 'MEX', bottom: 'ECU',
+    kickoffUTC: '2026-07-01T01:00:00Z', venue: 'Mexico City',
+    result: { winner: 'MEX', scoreTop: 2, scoreBottom: 0 },
+  },
   { id: 'r32-3', top: 'ENG', bottom: 'COD', kickoffUTC: '2026-07-01T16:00:00Z', venue: 'Atlanta' },
   { id: 'r32-4', top: 'ARG', bottom: 'CPV', kickoffUTC: '2026-07-03T22:00:00Z', venue: 'Miami Gardens' },
   { id: 'r32-5', top: 'AUS', bottom: 'EGY', kickoffUTC: '2026-07-03T18:00:00Z', venue: 'Arlington, TX' },
@@ -46,7 +54,11 @@ export const R32_SEED: R32Seed[] = [
     kickoffUTC: '2026-06-30T01:00:00Z', venue: 'Boston',
     result: { winner: 'PAR', scoreTop: 1, scoreBottom: 1, penalties: [3, 4], note: 'Paraguay won 4–3 on penalties' },
   },
-  { id: 'r32-9', top: 'FRA', bottom: 'SWE', kickoffUTC: '2026-06-30T21:00:00Z', venue: 'East Rutherford, NJ' },
+  {
+    id: 'r32-9', top: 'FRA', bottom: 'SWE',
+    kickoffUTC: '2026-06-30T21:00:00Z', venue: 'East Rutherford, NJ',
+    result: { winner: 'FRA', scoreTop: 3, scoreBottom: 0 },
+  },
   {
     id: 'r32-10', top: 'RSA', bottom: 'CAN',
     kickoffUTC: '2026-06-28T17:00:00Z', venue: 'Los Angeles',
