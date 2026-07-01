@@ -100,7 +100,9 @@ export function Bracket({
                 locked={false}
                 ariaLabel={teamId ? `${getTeam(teamId)!.name}, advance to next round` : 'Undecided'}
                 onPick={clickable && teamId && s.parentId ? () => pick(s.parentId!, teamId) : undefined}
-                onEnter={teamId ? enter(teamId, s.matchId) : undefined}
+                // Show the fixture for the round this team has advanced INTO (its
+                // next match), not the match it just won.
+                onEnter={teamId && s.parentId ? enter(teamId, s.parentId) : undefined}
                 onLeave={teamId ? leave : undefined}
               />
             );
