@@ -75,11 +75,12 @@ src/
 
 ## Updating the data
 
-The bracket is a static seed. To change teams, pairings, fixtures or results, edit
-[`src/data/bracket.ts`](src/data/bracket.ts) (the 16 Round of 32 matches, ordered right half then
-left half) and [`src/data/teams.ts`](src/data/teams.ts) (team names + `flag-icons` codes). Each match
-carries a `kickoffUTC` instant (rendered in IST) and a host `venue`; add a `result` to a match to mark
-it played and lock it.
+The bracket is a static seed. To change teams, pairings or results, edit
+[`src/data/bracket.ts`](src/data/bracket.ts): `R32_SEED` holds the 16 Round of 32 matches (ordered
+right half then left half; add a `result` to mark a match played and locked), and `FIXTURES` maps
+**every** match id (`r32-*`, `r16-*`, `qf-*`, `sf-*`, `final`) to its `kickoffUTC` instant (rendered
+in IST) and host `venue`. Team names + `flag-icons` codes live in
+[`src/data/teams.ts`](src/data/teams.ts).
 
 ## Deploying
 
