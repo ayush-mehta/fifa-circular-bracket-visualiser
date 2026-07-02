@@ -26,7 +26,7 @@ export const R32_SEED: R32Seed[] = [
   { id: 'r32-0', top: 'BRA', bottom: 'JPN', result: { winner: 'BRA', scoreTop: 2, scoreBottom: 1 } },
   { id: 'r32-1', top: 'CIV', bottom: 'NOR', result: { winner: 'NOR', scoreTop: 1, scoreBottom: 2 } },
   { id: 'r32-2', top: 'MEX', bottom: 'ECU', result: { winner: 'MEX', scoreTop: 2, scoreBottom: 0 } },
-  { id: 'r32-3', top: 'ENG', bottom: 'COD' },
+  { id: 'r32-3', top: 'ENG', bottom: 'COD', result: { winner: 'ENG', scoreTop: 2, scoreBottom: 1 } },
   { id: 'r32-4', top: 'ARG', bottom: 'CPV' },
   { id: 'r32-5', top: 'AUS', bottom: 'EGY' },
   { id: 'r32-6', top: 'SUI', bottom: 'ALG' },
@@ -44,8 +44,11 @@ export const R32_SEED: R32Seed[] = [
   },
   { id: 'r32-12', top: 'POR', bottom: 'CRO' },
   { id: 'r32-13', top: 'ESP', bottom: 'AUT' },
-  { id: 'r32-14', top: 'USA', bottom: 'BIH' },
-  { id: 'r32-15', top: 'BEL', bottom: 'SEN' },
+  { id: 'r32-14', top: 'USA', bottom: 'BIH', result: { winner: 'USA', scoreTop: 2, scoreBottom: 0 } },
+  {
+    id: 'r32-15', top: 'BEL', bottom: 'SEN',
+    result: { winner: 'BEL', scoreTop: 3, scoreBottom: 2, note: 'after extra time' },
+  },
 ];
 
 export interface Fixture {
