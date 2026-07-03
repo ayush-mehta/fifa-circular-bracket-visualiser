@@ -29,7 +29,7 @@ export const R32_SEED: R32Seed[] = [
   { id: 'r32-3', top: 'ENG', bottom: 'COD', result: { winner: 'ENG', scoreTop: 2, scoreBottom: 1 } },
   { id: 'r32-4', top: 'ARG', bottom: 'CPV' },
   { id: 'r32-5', top: 'AUS', bottom: 'EGY' },
-  { id: 'r32-6', top: 'SUI', bottom: 'ALG' },
+  { id: 'r32-6', top: 'SUI', bottom: 'ALG', result: { winner: 'SUI', scoreTop: 2, scoreBottom: 0 } },
   { id: 'r32-7', top: 'COL', bottom: 'GHA' },
   // ---- Left half (top -> bottom) ----
   {
@@ -42,8 +42,8 @@ export const R32_SEED: R32Seed[] = [
     id: 'r32-11', top: 'NED', bottom: 'MAR',
     result: { winner: 'MAR', scoreTop: 1, scoreBottom: 1, penalties: [2, 3], note: 'Morocco won 3–2 on penalties' },
   },
-  { id: 'r32-12', top: 'POR', bottom: 'CRO' },
-  { id: 'r32-13', top: 'ESP', bottom: 'AUT' },
+  { id: 'r32-12', top: 'POR', bottom: 'CRO', result: { winner: 'POR', scoreTop: 2, scoreBottom: 1 } },
+  { id: 'r32-13', top: 'ESP', bottom: 'AUT', result: { winner: 'ESP', scoreTop: 3, scoreBottom: 0 } },
   { id: 'r32-14', top: 'USA', bottom: 'BIH', result: { winner: 'USA', scoreTop: 2, scoreBottom: 0 } },
   {
     id: 'r32-15', top: 'BEL', bottom: 'SEN',
