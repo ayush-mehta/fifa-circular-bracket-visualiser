@@ -1,6 +1,7 @@
 import { useBracket } from './hooks/useBracket';
 import { Bracket } from './components/Bracket';
 import { Controls } from './components/Controls';
+import { resultsSummary } from './lib/format';
 
 function App() {
   const b = useBracket();
@@ -27,7 +28,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <span>Round of 32 finalised · results through 30 Jun 2026.</span>
+        <span>{resultsSummary()}</span>
         <span>Flags by flag-icons. Unofficial fan project — not affiliated with FIFA.</span>
       </footer>
     </div>
