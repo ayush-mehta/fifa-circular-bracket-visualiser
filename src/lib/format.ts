@@ -1,8 +1,5 @@
-import { FIXTURES, R32_SEED } from '../data/bracket';
+import { FIXTURES, RESULTS } from '../data/bracket';
 import { TEAMS } from '../data/teams';
-
-const seedById: Record<string, (typeof R32_SEED)[number]> = {};
-for (const m of R32_SEED) seedById[m.id] = m;
 
 const IST_FORMAT = new Intl.DateTimeFormat('en-US', {
   timeZone: 'Asia/Kolkata',
@@ -27,14 +24,13 @@ export function formatFixture(matchId: string): string | null {
   return `${date} · ${time} · ${f.venue}`;
 }
 
-/** Human-readable scoreline for a completed R32 match, e.g.
- *  "Brazil 2–1 Japan" or "Germany 1–1 Paraguay · Paraguay won 4–3 on penalties". */
+/** Human-readable scoreline for a completed match, e.g. "Brazil 2–1 Japan" or
+ *  "Germany 1–1 Paraguay · Paraguay won 4–3 on penalties". Null if not played. */
 export function formatResult(matchId: string): string | null {
-  const m = seedById[matchId];
-  if (!m?.result) return null;
-  const { scoreTop, scoreBottom, note } = m.result;
-  const top = TEAMS[m.top].name;
-  const bottom = TEAMS[m.bottom].name;
-  const base = `${top} ${scoreTop}–${scoreBottom} ${bottom}`;
-  return note ? `${base} · ${note}` : base;
+  const r = RESULTS[matchId];
+  if (!r) return null;
+  const a = TEAMS[r.teams[0]].name;
+  const b = TEAMS[r.teams[1]].name;
+  const base = `${a} ${r.scores[0]}–${r.scores[1]} ${b}`;
+  return r.note ? `${base} · ${r.note}` : base;
 }

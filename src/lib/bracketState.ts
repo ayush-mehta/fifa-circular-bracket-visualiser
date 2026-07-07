@@ -7,7 +7,7 @@
 //   SF    2 matches  sf-0..1     children qf-2s / qf-2s+1   (winners are finalists)
 //   F     1 match    final       children sf-0 / sf-1       (winner is champion)
 
-import { R32_SEED } from '../data/bracket';
+import { R32_SEED, RESULTS } from '../data/bracket';
 import type { R32Seed } from '../data/bracket';
 
 export type RoundId = 'R32' | 'R16' | 'QF' | 'SF' | 'F';
@@ -100,12 +100,10 @@ export function getMatch(id: string): MatchNode {
 
 export type Winners = Record<string, string | null>;
 
-/** Winners map seeded with only the real, already-played results. */
+/** Winners map seeded with the real, already-played results (any round). */
 export function seedWinners(): Winners {
   const w: Winners = {};
-  for (const m of R32_SEED) {
-    if (m.result) w[m.id] = m.result.winner;
-  }
+  for (const id in RESULTS) w[id] = RESULTS[id].winner;
   return w;
 }
 

@@ -5,15 +5,12 @@ import {
   setWinner as applySetWinner,
 } from '../lib/bracketState';
 import type { Winners } from '../lib/bracketState';
-import { R32_SEED } from '../data/bracket';
-import type { SeedResult } from '../data/bracket';
+import { RESULTS } from '../data/bracket';
+import type { MatchResult } from '../data/bracket';
 
 const STORAGE_KEY = 'wc2026-bracket-v1';
 
-const RESULTS: Record<string, SeedResult> = {};
-for (const m of R32_SEED) if (m.result) RESULTS[m.id] = m.result;
-
-export function getResult(matchId: string): SeedResult | undefined {
+export function getResult(matchId: string): MatchResult | undefined {
   return RESULTS[matchId];
 }
 
