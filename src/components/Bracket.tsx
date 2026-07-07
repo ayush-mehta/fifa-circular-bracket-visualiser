@@ -86,7 +86,9 @@ export function Bracket({
         <g className="winner-slots">
           {WINNER_SLOTS.map((s) => {
             const teamId = winners[s.matchId] ?? null;
-            const clickable = !!teamId && !!s.parentId;
+            // Locked once the match this team feeds into has a real, played result.
+            const parentLocked = s.parentId ? isLocked(s.parentId) : false;
+            const clickable = !!teamId && !!s.parentId && !parentLocked;
             return (
               <FlagNode
                 key={s.matchId}
@@ -97,7 +99,7 @@ export function Bracket({
                 clickable={clickable}
                 highlighted={!!highlightTeam && teamId === highlightTeam}
                 dimmed={!!highlightTeam && teamId !== highlightTeam}
-                locked={false}
+                locked={parentLocked}
                 ariaLabel={teamId ? `${getTeam(teamId)!.name}, advance to next round` : 'Undecided'}
                 onPick={clickable && teamId && s.parentId ? () => pick(s.parentId!, teamId) : undefined}
                 // Show the fixture for the round this team has advanced INTO (its
