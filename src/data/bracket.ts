@@ -61,9 +61,11 @@ export const RESULTS: Record<string, MatchResult> = {
   'r32-13': { teams: ['ESP', 'AUT'], scores: [3, 0], winner: 'ESP' },
   'r32-14': { teams: ['USA', 'BIH'], scores: [2, 0], winner: 'USA' },
   'r32-15': { teams: ['BEL', 'SEN'], scores: [3, 2], winner: 'BEL', note: 'after extra time' },
-  // ---- Round of 16 (July 4–6; the two July 7 ties are still open) ----
+  // ---- Round of 16 (complete) ----
   'r16-0': { teams: ['BRA', 'NOR'], scores: [0, 2], winner: 'NOR' },
   'r16-1': { teams: ['MEX', 'ENG'], scores: [2, 3], winner: 'ENG' },
+  'r16-2': { teams: ['ARG', 'EGY'], scores: [3, 2], winner: 'ARG' },
+  'r16-3': { teams: ['SUI', 'COL'], scores: [0, 0], penalties: [4, 3], winner: 'SUI', note: 'Switzerland won 4–3 on penalties' },
   'r16-4': { teams: ['PAR', 'FRA'], scores: [0, 1], winner: 'FRA' },
   'r16-5': { teams: ['CAN', 'MAR'], scores: [0, 3], winner: 'MAR' },
   'r16-6': { teams: ['POR', 'ESP'], scores: [0, 1], winner: 'ESP' },
