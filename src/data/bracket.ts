@@ -70,6 +70,8 @@ export const RESULTS: Record<string, MatchResult> = {
   'r16-5': { teams: ['CAN', 'MAR'], scores: [0, 3], winner: 'MAR' },
   'r16-6': { teams: ['POR', 'ESP'], scores: [0, 1], winner: 'ESP' },
   'r16-7': { teams: ['USA', 'BEL'], scores: [1, 4], winner: 'BEL' },
+  // ---- Quarter-finals (France–Morocco played 9 Jul; the rest still to come) ----
+  'qf-2': { teams: ['FRA', 'MAR'], scores: [2, 0], winner: 'FRA' },
 };
 
 export interface Fixture {
@@ -113,8 +115,8 @@ export const FIXTURES: Record<string, Fixture> = {
   // ---- Quarter-finals ----
   'qf-0': { kickoffUTC: '2026-07-11T21:00:00Z', venue: 'Miami Gardens' },
   'qf-1': { kickoffUTC: '2026-07-12T01:00:00Z', venue: 'Kansas City' },
-  'qf-2': { kickoffUTC: '2026-07-10T19:00:00Z', venue: 'Inglewood, CA' },
-  'qf-3': { kickoffUTC: '2026-07-09T20:00:00Z', venue: 'Foxborough, MA' },
+  'qf-2': { kickoffUTC: '2026-07-09T20:00:00Z', venue: 'Foxborough, MA' },
+  'qf-3': { kickoffUTC: '2026-07-10T19:00:00Z', venue: 'Inglewood, CA' },
   // ---- Semi-finals ----
   'sf-0': { kickoffUTC: '2026-07-14T19:00:00Z', venue: 'Arlington, TX' },
   'sf-1': { kickoffUTC: '2026-07-15T19:00:00Z', venue: 'Atlanta' },
