@@ -70,8 +70,11 @@ export const RESULTS: Record<string, MatchResult> = {
   'r16-5': { teams: ['CAN', 'MAR'], scores: [0, 3], winner: 'MAR' },
   'r16-6': { teams: ['POR', 'ESP'], scores: [0, 1], winner: 'ESP' },
   'r16-7': { teams: ['USA', 'BEL'], scores: [1, 4], winner: 'BEL' },
-  // ---- Quarter-finals (France–Morocco played 9 Jul; the rest still to come) ----
+  // ---- Quarter-finals (complete) ----
+  'qf-0': { teams: ['NOR', 'ENG'], scores: [1, 2], winner: 'ENG', note: 'after extra time' },
+  'qf-1': { teams: ['ARG', 'SUI'], scores: [3, 1], winner: 'ARG', note: 'after extra time' },
   'qf-2': { teams: ['FRA', 'MAR'], scores: [2, 0], winner: 'FRA' },
+  'qf-3': { teams: ['ESP', 'BEL'], scores: [2, 1], winner: 'ESP' },
 };
 
 export interface Fixture {
@@ -117,9 +120,9 @@ export const FIXTURES: Record<string, Fixture> = {
   'qf-1': { kickoffUTC: '2026-07-12T01:00:00Z', venue: 'Kansas City' },
   'qf-2': { kickoffUTC: '2026-07-09T20:00:00Z', venue: 'Foxborough, MA' },
   'qf-3': { kickoffUTC: '2026-07-10T19:00:00Z', venue: 'Inglewood, CA' },
-  // ---- Semi-finals ----
-  'sf-0': { kickoffUTC: '2026-07-14T19:00:00Z', venue: 'Arlington, TX' },
-  'sf-1': { kickoffUTC: '2026-07-15T19:00:00Z', venue: 'Atlanta' },
+  // ---- Semi-finals (sf-1 = France/Spain → 14 Jul Arlington; sf-0 = England/Argentina → 15 Jul Atlanta) ----
+  'sf-0': { kickoffUTC: '2026-07-15T19:00:00Z', venue: 'Atlanta' },
+  'sf-1': { kickoffUTC: '2026-07-14T19:00:00Z', venue: 'Arlington, TX' },
   // ---- Final ----
   final: { kickoffUTC: '2026-07-19T19:00:00Z', venue: 'East Rutherford, NJ' },
 };
