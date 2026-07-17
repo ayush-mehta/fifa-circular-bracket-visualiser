@@ -75,6 +75,9 @@ export const RESULTS: Record<string, MatchResult> = {
   'qf-1': { teams: ['ARG', 'SUI'], scores: [3, 1], winner: 'ARG', note: 'after extra time' },
   'qf-2': { teams: ['FRA', 'MAR'], scores: [2, 0], winner: 'FRA' },
   'qf-3': { teams: ['ESP', 'BEL'], scores: [2, 1], winner: 'ESP' },
+  // ---- Semi-finals (complete; final is Spain v Argentina on 19 Jul) ----
+  'sf-0': { teams: ['ENG', 'ARG'], scores: [1, 2], winner: 'ARG' },
+  'sf-1': { teams: ['FRA', 'ESP'], scores: [0, 2], winner: 'ESP' },
 };
 
 export interface Fixture {
