@@ -12,7 +12,7 @@ function App() {
         whatIf={b.whatIf}
         setWhatIf={b.setWhatIf}
         resetToActual={b.resetToActual}
-        clearAll={b.clearAll}
+        resetToR32={b.resetToR32}
         champion={b.champion}
       />
 

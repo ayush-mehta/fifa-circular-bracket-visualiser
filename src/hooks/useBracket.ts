@@ -71,7 +71,8 @@ export function useBracket() {
   );
 
   const resetToActual = useCallback(() => setWinners(seedWinners()), []);
-  const clearAll = useCallback(() => setWinners({}), []);
+  // Clear every pick back to the Round of 32 starting line-up (predict from scratch).
+  const resetToR32 = useCallback(() => setWinners({}), []);
 
   const champion = championOf(winners);
 
@@ -83,7 +84,7 @@ export function useBracket() {
     setHighlightTeam,
     pick,
     resetToActual,
-    clearAll,
+    resetToR32,
     isLocked,
     showsRealResult,
     champion,

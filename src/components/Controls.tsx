@@ -1,16 +1,17 @@
 import { getTeam } from '../data/teams';
-import { TOURNAMENT_SUBTITLE, TOURNAMENT_TITLE } from '../data/bracket';
+import { RESULTS, TOURNAMENT_SUBTITLE, TOURNAMENT_TITLE } from '../data/bracket';
 
 interface ControlsProps {
   whatIf: boolean;
   setWhatIf: (v: boolean) => void;
   resetToActual: () => void;
-  clearAll: () => void;
+  resetToR32: () => void;
   champion: string | null;
 }
 
-export function Controls({ whatIf, setWhatIf, resetToActual, clearAll, champion }: ControlsProps) {
+export function Controls({ whatIf, setWhatIf, resetToActual, resetToR32, champion }: ControlsProps) {
   const championTeam = getTeam(champion);
+  const isActualChampion = !!champion && RESULTS.final?.winner === champion;
 
   return (
     <header className="controls">
@@ -28,8 +29,8 @@ export function Controls({ whatIf, setWhatIf, resetToActual, clearAll, champion 
         <button type="button" className="btn" onClick={resetToActual}>
           Reset to actual
         </button>
-        <button type="button" className="btn" onClick={clearAll}>
-          Clear all
+        <button type="button" className="btn" onClick={resetToR32}>
+          Reset to Round of 32
         </button>
         <label className="toggle">
           <input type="checkbox" checked={whatIf} onChange={(e) => setWhatIf(e.target.checked)} />
@@ -43,7 +44,7 @@ export function Controls({ whatIf, setWhatIf, resetToActual, clearAll, champion 
 
       {championTeam && (
         <p className="champion-banner" role="status">
-          🏆 {championTeam.name} — your predicted champions
+          🏆 {championTeam.name} — {isActualChampion ? 'World Cup champions' : 'your predicted champions'}
         </p>
       )}
     </header>
